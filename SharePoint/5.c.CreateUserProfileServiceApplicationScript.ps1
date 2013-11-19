@@ -22,15 +22,15 @@ if($serviceApplication -eq $null) {
   $serviceApplication = New-SPProfileServiceApplication `
                             -Name $serviceApplicationName `
                             -ApplicationPool $serviceAppPoolName `
-                                        -ProfileDBName $profileDBName `
-                                        -ProfileDBServer $sqlServer `
-                                        -SocialDBName $socialDBName `
-                                        -SocialDBServer $sqlServer `
-                                        -ProfileSyncDBName $profileSyncDBName `
-                                        -ProfileSyncDBServer $sqlServer `
-                                        -MySiteHostLocation $mySiteHostLocation `
-                                        -MySiteManagedPath $mySiteManagedPath `
-                                        -SiteNamingConflictResolution None
+                            -ProfileDBName $profileDBName `
+                            -ProfileDBServer $sqlServer `
+                            -SocialDBName $socialDBName `
+                            -SocialDBServer $sqlServer `
+                            -ProfileSyncDBName $profileSyncDBName `
+                            -ProfileSyncDBServer $sqlServer `
+                            -MySiteHostLocation $mySiteHostLocation `
+                            -MySiteManagedPath $mySiteManagedPath `
+                            -SiteNamingConflictResolution None
     
   $serviceApplicationProxyName = "User Profile Service Application"
   Write-Host "Creating the User Profile Service Proxy..."

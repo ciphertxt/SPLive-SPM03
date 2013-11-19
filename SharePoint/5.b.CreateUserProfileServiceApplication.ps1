@@ -4,6 +4,9 @@ $targetScriptPath = Join-Path $scriptFolder "\5.c.CreateUserProfileServiceApplic
 
 Add-PSSnapin Microsoft.SharePoint.PowerShell 
 
+$servicesAccountName = "splive360\svcspfarm"
+$servicesAccountPassword = "Devise!!!"
+
 function Create-UserProfileServiceApplication {
 
     $service = Get-SPServiceInstance | where {$_.TypeName -eq "User Profile Service"}
@@ -26,8 +29,6 @@ function Create-UserProfileServiceApplication {
     Write-Host "Executing script $targetScriptPath using credentials of svcspfarm"
 
     # Get the Farm Account Creds 
-    $servicesAccountName = "splive360\svcspfarm"
-    $servicesAccountPassword = "Devise!!!"
     $servicesAccountecureStringPassword = ConvertTo-SecureString -String $servicesAccountPassword -AsPlainText -Force
     $farmAccountCredentials = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $servicesAccountName, $servicesAccountecureStringPassword 
 
@@ -53,7 +54,7 @@ function Start-UserProfileSynchronizationService {
         $objIPProperties = [System.Net.NetworkInformation.IPGlobalProperties]::GetIPGlobalProperties()
         $currentHostName = $objIPProperties.HostName
 
-        $app.SetSynchronizationMachine($currentHostName, $svc.Id, "splive360\svcspfarm", "Devise!!!")
+        $app.SetSynchronizationMachine($currentHostName, $svc.Id, $servicesAccountName, $servicesAccountPassword)
           
         $svc | Start-SPServiceInstance | Out-Null
         
