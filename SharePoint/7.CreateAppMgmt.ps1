@@ -9,7 +9,7 @@ Start-SPServiceInstance $appMgmtSvc
 # Creates the Subscription Settings service application, using the variable to associate it with the application pool that was created earlier.
 # Stores the new service application as a variable for later use.
 $svcAppPool = Get-SPServiceApplicationPool "SharePoint Web Services Default"
-$appSubSvc = New-SPSubscriptionSettingsServiceApplication -ApplicationPool $svcAppPool -Name "Subscription Settings Service Application" -DatabaseName "ESDEVWFE01_SA_SubscriptionSettings"
+$appSubSvc = New-SPSubscriptionSettingsServiceApplication -ApplicationPool $svcAppPool -Name "Subscription Settings Service Application" -DatabaseName "Contoso_SA_SubscriptionSettings"
 
 # Creates a proxy for the Subscription Settings service application.
 $proxySubSvc = New-SPSubscriptionSettingsServiceApplicationProxy -ServiceApplication $appSubSvc
