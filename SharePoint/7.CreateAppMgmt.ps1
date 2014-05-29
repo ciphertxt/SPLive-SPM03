@@ -1,3 +1,5 @@
+$appDomain = "contosoapps.com"
+$appDomainPrefix = "app"
 $subSettingsSvc = Get-SPServiceInstance | ? { $_.TypeName -eq "Microsoft SharePoint Foundation Subscription Settings Service" 
 $appMgmtSvc = Get-SPServiceInstance | ? { $_.TypeName -eq "App Management Service" } 
 
@@ -20,6 +22,6 @@ $appAppSvc = New-SPAppManagementServiceApplication -ApplicationPool $svcAppPool 
 $proxyAppSvc = New-SPAppManagementServiceApplicationProxy -ServiceApplication $appAppSvc
 
 # Set the base domain
-Set-SPAppDomain <appDomain>
+Set-SPAppDomain $appDomain
 # Set the app prefix
-Set-SPAppSiteSubscriptionName -Name "app" -Confirm:$false
+Set-SPAppSiteSubscriptionName -Name $appDomainPrefix -Confirm:$false
