@@ -1,6 +1,6 @@
 $appDomain = "contosoapps.com"
 $appDomainPrefix = "app"
-$subSettingsSvc = Get-SPServiceInstance | ? { $_.TypeName -eq "Microsoft SharePoint Foundation Subscription Settings Service" 
+$subSettingsSvc = Get-SPServiceInstance | ? { $_.TypeName -eq "Microsoft SharePoint Foundation Subscription Settings Service" }
 $appMgmtSvc = Get-SPServiceInstance | ? { $_.TypeName -eq "App Management Service" } 
 
 Start-SPServiceInstance $subSettingsSvc
